@@ -8,11 +8,17 @@ services:
     image: postgres:latest
     volumes:
       - pg-data-dev:/var/lib/postgresql/data
-    env_file:
-      - .env
     ports:
       - ${POSTGRES_PORT}:${POSTGRES_PORT}
 
+  pgadmin:
+    container_name: pgadmin-dev
+    image: dpage/pgadmin4:latest
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    ports:
+      - '5050:80'
 
 volumes:
   pg-data-dev:
+  pgadmin-data:

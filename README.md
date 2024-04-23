@@ -1,6 +1,6 @@
-# Desafio-MKS
+# Backend-MKS
 
-Desafio Backend
+API de filmes
 
 ## Notes
 

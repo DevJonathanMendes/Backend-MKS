@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import {
   Column,
   CreateDateColumn,
@@ -7,43 +8,44 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class Movie {
+export class MovieEntity {
+  @ApiProperty()
   @PrimaryGeneratedColumn()
   id: number;
 
+  @ApiProperty()
   @Column()
   Title: string;
 
+  @ApiProperty()
   @Column()
-  Year: string;
+  Year: number;
 
-  @Column()
-  Rated: string;
-
+  @ApiProperty()
   @Column()
   Released: string;
 
+  @ApiProperty()
   @Column()
   Runtime: string;
 
+  @ApiProperty()
   @Column()
   Genre: string;
 
+  @ApiProperty()
   @Column()
   Director: string;
 
+  @ApiProperty()
   @Column()
-  Plot: string;
+  IMDb: string;
 
-  @Column()
-  Language: string;
-
-  @Column('jsonb')
-  Ratings: { Source: string; Value: string }[];
-
+  @ApiProperty()
   @CreateDateColumn()
   Created: string;
 
+  @ApiProperty()
   @UpdateDateColumn()
   Updated: string;
 }

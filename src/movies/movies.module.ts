@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { MoviesService } from './movies.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { MovieEntity } from './entities/movie.entity';
 import { MoviesController } from './movies.controller';
-import { DatabaseModule } from '../database/database.module';
-import { movieProviders } from './entities/movie.providers';
+import { MoviesService } from './movies.service';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [TypeOrmModule.forFeature([MovieEntity])],
   controllers: [MoviesController],
-  providers: [...movieProviders, MoviesService],
+  providers: [MoviesService],
 })
 export class MoviesModule {}

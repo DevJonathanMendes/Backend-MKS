@@ -14,3 +14,20 @@ Desafio Backend
 	- IMDb
 
 - Definir length das Colunas
+
+# Tarefas (Funcional)
+
+- [ ] Endpoints com autenticação.
+	- [x] Bearer Token.
+	- [ ] Autenticação JWT.
+
+## Ferramentas Requeridas
+
+- [x] TypeScript
+- [x] Nest.JS
+- [x] TypeORM
+- [x] Swagger
+- [x] Docker
+- [x] PostgreSQL
+- [ ] Redis
+	- [ ] Cache

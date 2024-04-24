@@ -15,11 +15,12 @@ API de filmes
 
 - Definir length das Colunas
 
-# Tarefas (Funcional)
+## Tarefas (Funcional)
 
-- [ ] Endpoints com autenticação.
-	- [x] Bearer Token.
-	- [ ] Autenticação JWT.
+### Endpoints com Tokens.
+
+- [x] Bearer Token.
+- [x] Autenticação JWT.
 
 ## Ferramentas Requeridas
 

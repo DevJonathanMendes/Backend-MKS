@@ -4,7 +4,6 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as compression from 'compression';
 import helmet from 'helmet';
 
-import { AppGuard } from './app.guard';
 import { AppModule } from './app.module';
 import { AppPipeTransform } from './app.pipe';
 
@@ -19,8 +18,6 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);
-
-  app.useGlobalGuards(new AppGuard());
 
   app.useGlobalPipes(new AppPipeTransform());
   app.useGlobalPipes(new ValidationPipe());

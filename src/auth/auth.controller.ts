@@ -1,6 +1,6 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import {
-  ApiBearerAuth,
+  ApiBadRequestResponse,
   ApiCreatedResponse,
   ApiOkResponse,
   ApiTags,
@@ -13,7 +13,6 @@ import { UpdatedUserDto } from '../users/dto/update-user.dto';
 import { AuthService } from './auth.service';
 import { Public } from './decorators/public.decorator';
 
-@ApiBearerAuth()
 @ApiTags('auth')
 @Public()
 @Controller('auth')
@@ -21,6 +20,7 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   @ApiOkResponse()
+  @ApiBadRequestResponse()
   @ApiUnauthorizedResponse()
   @HttpCode(HttpStatus.OK)
   @Post('signin')
@@ -29,6 +29,7 @@ export class AuthController {
   }
 
   @ApiCreatedResponse()
+  @ApiBadRequestResponse()
   @ApiUnauthorizedResponse()
   @Post('signup')
   signUp(@Body() data: CreateUserDto) {

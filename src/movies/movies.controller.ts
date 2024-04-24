@@ -9,6 +9,7 @@ import {
   Post,
 } from '@nestjs/common';
 import {
+  ApiBadRequestResponse,
   ApiBearerAuth,
   ApiCreatedResponse,
   ApiOkResponse,
@@ -30,6 +31,7 @@ export class MoviesController {
   constructor(private readonly service: MoviesService) {}
 
   @ApiCreatedResponse()
+  @ApiBadRequestResponse()
   @ApiUnauthorizedResponse()
   @Post()
   create(@Body() data: CreateMovieDto): Promise<MovieEntity> {
@@ -37,6 +39,7 @@ export class MoviesController {
   }
 
   @ApiOkResponse()
+  @ApiBadRequestResponse()
   @ApiUnauthorizedResponse()
   @Get()
   findAll(): Promise<MovieEntity[]> {
@@ -44,6 +47,7 @@ export class MoviesController {
   }
 
   @ApiOkResponse()
+  @ApiBadRequestResponse()
   @ApiUnauthorizedResponse()
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number): Promise<MovieEntity> {
@@ -51,6 +55,7 @@ export class MoviesController {
   }
 
   @ApiCreatedResponse()
+  @ApiBadRequestResponse()
   @ApiUnauthorizedResponse()
   @Patch(':id')
   update(
@@ -61,6 +66,7 @@ export class MoviesController {
   }
 
   @ApiOkResponse()
+  @ApiBadRequestResponse()
   @ApiUnauthorizedResponse()
   @Delete(':id')
   remove(@Param('id', ParseIntPipe) id: number): Promise<DeleteResult> {

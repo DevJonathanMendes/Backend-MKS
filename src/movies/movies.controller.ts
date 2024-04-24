@@ -8,7 +8,13 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiTags,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
 import { DeleteResult, UpdateResult } from 'typeorm';
 
 import { MoviesService } from './movies.service';
@@ -23,21 +29,29 @@ import { MovieEntity } from './entities/movie.entity';
 export class MoviesController {
   constructor(private readonly service: MoviesService) {}
 
+  @ApiCreatedResponse()
+  @ApiUnauthorizedResponse()
   @Post()
   create(@Body() data: CreateMovieDto): Promise<MovieEntity> {
     return this.service.create(data);
   }
 
+  @ApiOkResponse()
+  @ApiUnauthorizedResponse()
   @Get()
   findAll(): Promise<MovieEntity[]> {
     return this.service.findAll();
   }
 
+  @ApiOkResponse()
+  @ApiUnauthorizedResponse()
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number): Promise<MovieEntity> {
     return this.service.findOne(id);
   }
 
+  @ApiCreatedResponse()
+  @ApiUnauthorizedResponse()
   @Patch(':id')
   update(
     @Param('id', ParseIntPipe) id: number,
@@ -46,6 +60,8 @@ export class MoviesController {
     return this.service.update(id, data);
   }
 
+  @ApiOkResponse()
+  @ApiUnauthorizedResponse()
   @Delete(':id')
   remove(@Param('id', ParseIntPipe) id: number): Promise<DeleteResult> {
     return this.service.remove(id);

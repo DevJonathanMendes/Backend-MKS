@@ -4,9 +4,14 @@ API de filmes
 
 ## Execução
 
-> docker-compose up -d
-> npm install
-> npm run start:dev
+```bash
+docker-compose up -d
+```
+
+```bash
+npm install
+npm run start:dev
+```
 
 ## Notas
 

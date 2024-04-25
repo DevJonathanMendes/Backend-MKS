@@ -3,9 +3,21 @@
 version: '3'
 
 services:
+  redis:
+    container_name: redis-dev
+    image: bitnami/redis:latest
+    env_file:
+      - .env
+    volumes:
+      - redis-data-dev:/bitnami/redis/data
+    ports:
+      - '${REDIS_PORT_NUMBER}:${REDIS_PORT_NUMBER}'
+
   postgres:
     container_name: postgres-dev
     image: postgres:latest
+    env_file:
+      - .env
     volumes:
       - pg-data-dev:/var/lib/postgresql/data
     ports:
@@ -14,11 +26,14 @@ services:
   pgadmin:
     container_name: pgadmin-dev
     image: dpage/pgadmin4:latest
+    env_file:
+      - .env
     volumes:
-      - pgadmin-data:/var/lib/pgadmin
+      - pgadmin-data-dev:/var/lib/pgadmin
     ports:
       - '5050:80'
 
 volumes:
+  redis-data-dev:
   pg-data-dev:
-  pgadmin-data:
+  pgadmin-data-dev:
